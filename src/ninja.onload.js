@@ -18,10 +18,10 @@ if (ninja.getQueryString()["culture"] != undefined) {
 if (ninja.getQueryString()["testnet"] == "true" || ninja.getQueryString()["testnet"] == "1") {
 	document.getElementById("testnet").innerHTML = ninja.translator.get("testneteditionactivated");
 	document.getElementById("testnet").style.display = "block";
-	document.getElementById("detailwifprefix").innerHTML = "'9'";
-	document.getElementById("detailcompwifprefix").innerHTML = "'c'";
-	Bitcoin.Address.networkVersion = 0x6F; // testnet
-	Bitcoin.ECKey.privateKeyPrefix = 0xEF; // testnet
+	document.getElementById("detailwifprefix").innerHTML = "'2'"; 		// testnet BTC: '9', JIN: '2'
+	document.getElementById("detailcompwifprefix").innerHTML = "'8'";	// testnet BTC: 'c', JIN: '8'
+	Bitcoin.Address.networkVersion = 0x80; // testnet BTC: 0x6F, JIN: 0x80
+	Bitcoin.ECKey.privateKeyPrefix = 0x34; // testnet BTC: 0xEF, JIN: 0x34
 	ninja.testnetMode = true;
 }
 if (ninja.getQueryString()["showseedpool"] == "true" || ninja.getQueryString()["showseedpool"] == "1") {

@@ -257,9 +257,9 @@ ninja.privateKey = {
 		// Take SHA256(SHA256(seedb)) to yield 32 bytes, call this factorb.
 		var factorB = Bitcoin.Util.dsha256(seedB);
 
-		// 3) ECMultiply passpoint by factorb. Use the resulting EC point as a public key and hash it into a Bitcoin
+		// 3) ECMultiply passpoint by factorb. Use the resulting EC point as a public key and hash it into a Jincoin
 		// address using either compressed or uncompressed public key methodology (specify which methodology is used
-		// inside flagbyte). This is the generated Bitcoin address, call it generatedaddress.
+		// inside flagbyte). This is the generated Jincoin address, call it generatedaddress.
 		var ec = EllipticCurve.getSECCurveByName("secp256k1").getCurve();
 		var generatedPoint = ec.decodePointHex(ninja.publicKey.getHexFromByteArray(passpoint));
 		var generatedBytes = generatedPoint.multiply(BigInteger.fromByteArrayUnsigned(factorB)).getEncoded(compressed);

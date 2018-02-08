@@ -135,7 +135,7 @@ Bitcoin.ECKey = (function () {
 		}
 	};
 
-	ECKey.privateKeyPrefix = 0x80; // mainnet 0x80    testnet 0xEF
+	ECKey.privateKeyPrefix = 0xAB; // mainnet BTC: 0x80, JIN: 0xAB    testnet BTC: 0xEF, JIN: 0x34
 
 	/**
 	* Whether public keys should be returned compressed by default.
@@ -234,7 +234,7 @@ Bitcoin.ECKey = (function () {
 	ECKey.prototype.getBitcoinWalletImportFormat = function () {
 		var bytes = this.getBitcoinPrivateKeyByteArray();
 		if (bytes == null) return "";
-		bytes.unshift(ECKey.privateKeyPrefix); // prepend 0x80 byte
+		bytes.unshift(ECKey.privateKeyPrefix); // prepend 0xAB byte
 		if (this.compressed) bytes.push(0x01); // append 0x01 byte for compressed format
 		var checksum = Crypto.SHA256(Crypto.SHA256(bytes, { asBytes: true }), { asBytes: true });
 		bytes = bytes.concat(checksum.slice(0, 4));
@@ -330,20 +330,20 @@ Bitcoin.ECKey = (function () {
 		return /^[A-Fa-f0-9]{64}$/.test(key);
 	};
 
-	// 51 characters base58, always starts with a '5'
+	// 51 characters base58, always starts with a '6'
 	ECKey.isWalletImportFormat = function (key) {
 		key = key.toString();
-		return (ECKey.privateKeyPrefix == 0x80) ?
-							(/^5[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$/.test(key)) :
-							(/^9[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$/.test(key));
+		return (ECKey.privateKeyPrefix == 0xAB) ?
+							(/^6[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$/.test(key)) :
+							(/^2[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$/.test(key));
 	};
 
 	// 52 characters base58
 	ECKey.isCompressedWalletImportFormat = function (key) {
 		key = key.toString();
-		return (ECKey.privateKeyPrefix == 0x80) ?
-							(/^[LK][123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51}$/.test(key)) :
-							(/^c[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51}$/.test(key));
+		return (ECKey.privateKeyPrefix == 0xAB) ?
+							(/^S[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51}$/.test(key)) :
+							(/^8[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51}$/.test(key));
 	};
 
 	// 44 characters

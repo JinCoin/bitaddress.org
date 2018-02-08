@@ -7,10 +7,10 @@ Bitcoin.Address = function (bytes) {
 	this.version = Bitcoin.Address.networkVersion;
 };
 
-Bitcoin.Address.networkVersion = 0x00; // mainnet
+Bitcoin.Address.networkVersion = 0x2B; // mainnet BTC: 0x00, JIN: 0x2B
 
 /**
-* Serialize this object as a standard Bitcoin address.
+* Serialize this object as a standard Jincoin address.
 *
 * Returns the address as a base58-encoded string in the standardized format.
 */
@@ -30,7 +30,7 @@ Bitcoin.Address.prototype.getHashBase64 = function () {
 };
 
 /**
-* Parse a Bitcoin address contained in a string.
+* Parse a Jincoin address contained in a string.
 */
 Bitcoin.Address.decodeString = function (string) {
 	var bytes = Bitcoin.Base58.decode(string);

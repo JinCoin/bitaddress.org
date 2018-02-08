@@ -1,7 +1,7 @@
 # bitaddress.org
-JavaScript Client-Side Bitcoin Wallet Generator
+JavaScript Client-Side Jincoin Wallet Generator
 
-Now Bitcoin addresses and their corresponding private key can be conveniently 
+Now Jincoin addresses and their corresponding private key can be conveniently 
 generated in a web browser.
 
 The bitaddress.org project provides an all-in-one HTML document with embedded
@@ -14,7 +14,7 @@ Here is a link to the BitcoinTalk.org forum topic discussing this project:
 https://bitcointalk.org/index.php?topic=43496.0
 
 
-Please send DONATIONS for this project to Bitcoin Address: 
+Please send DONATIONS for this project to Jincoin Address: 
 1NiNja1bUmhSoTXozBRBEtR8LeF9TGbZBN
 
 
